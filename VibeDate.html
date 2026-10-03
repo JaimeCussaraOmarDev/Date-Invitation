@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Um convite para Benilda ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #fff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 25px;
+      padding: 30px 25px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .heart {
+      font-size: 50px;
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      color: #e91e63;
+      margin: 10px 0;
+      font-size: 28px;
+    }
+
+    h2 {
+      color: #e91e63;
+      font-size: 23px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .intro {
+      text-align: left;
+    }
+
+    .step {
+      display: none;
+      animation: aparecer 0.4s ease;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    button {
+      border: none;
+      padding: 14px 22px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 8px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .primary {
+      background: #e91e63;
+      color: white;
+    }
+
+    .yes {
+      background: #e91e63;
+      color: white;
+      min-width: 130px;
+    }
+
+    #nao {
+      background: #eee;
+      color: #555;
+      position: relative;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .food {
+      width: 100%;
+      background: #fff;
+      border: 2px solid #f3c1d3;
+      color: #444;
+      margin: 0;
+    }
+
+    .food.selected {
+      background: #e91e63;
+      color: white;
+      border-color: #e91e63;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #eee;
+      border-radius: 12px;
+      font-size: 16px;
+      margin-top: 8px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #e91e63;
+    }
+
+    .field {
+      text-align: left;
+      margin: 18px 0;
+    }
+
+    .field label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .resumo {
+      background: #fff5f8;
+      border-radius: 15px;
+      padding: 18px;
+      margin: 20px 0;
+      text-align: left;
+    }
+
+    .resumo strong {
+      color: #e91e63;
+    }
+
+    .final-message {
+      background: #fff5f8;
+      border-radius: 18px;
+      padding: 20px;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .loading {
+      display: none;
+      margin-top: 15px;
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .success {
+      font-size: 60px;
+      margin-bottom: 10px;
+    }
+
+    .calendar {
+      display: inline-block;
+      text-decoration: none;
+      background: #4285f4;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 30px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 20px;
+      font-style: italic;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 25px 18px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <!-- PASSO 0 -->
+    <div class="step active" id="step0">
+
+      <div class="heart">❤️</div>
+
+      <h1>Benilda Chico Manjemanje...</h1>
+
+      <div class="intro">
+
+        <p>
+          Eu podia simplesmente mandar uma mensagem e dizer:
+          <strong>“Vamos sair?”</strong>
+        </p>
+
+        <p>
+          Mas achei que uma simples mensagem seria demasiado normal. 😂
+        </p>
+
+        <p>
+          Então resolvi fazer isto.
+        </p>
+
+        <p>
+          Não estou a tentar fazer uma novela nem complicar as coisas.
+          É só um convite simples para passarmos um tempo juntos,
+          conversar, rir um pouco e comer alguma coisa.
+        </p>
+
+        <p>
+          Afinal... uma boa comida nunca estragou uma conversa. 😌😂
+        </p>
+
+      </div>
+
+      <button class="primary" onclick="irPara(1)">
+        Continua... 🤭
+      </button>
+
+    </div>
+
+
+    <!-- PASSO 1 -->
+    <div class="step" id="step1">
+
+      <div class="heart">😏</div>
+
+      <h2>Benilda, vai aceitar sair comigo?</h2>
+
+      <p>
+        Prometo que não é uma armadilha.<br>
+        Pelo menos não uma armadilha muito séria. 😂
+      </p>
+
+      <button class="yes" onclick="irPara(2)">
+        SIM ❤️
+      </button>
+
+      <button id="nao" onmouseover="fugir()" onclick="fugir()">
+        NÃO 😌
+      </button>
+
+    </div>
+
+
+    <!-- PASSO 2 -->
+    <div class="step" id="step2">
+
+      <div class="heart">🍔</div>
+
+      <h2>Primeiro vamos resolver uma questão importante...</h2>
+
+      <p>
+        O que vamos comer?
+      </p>
+
+      <div class="options">
+
+        <button class="food"
+          onclick="selecionarComida(this, 'Pao com Badjia')">
+          🥖 Pão com Badjia
+        </button>
+
+        <button class="food"
+          onclick="selecionarComida(this, 'Humburguer')">
+          🍔 Hambúrguer
+        </button>
+
+        <button class="food"
+          onclick="selecionarComida(this, 'Sorvete')">
+          🍦 Sorvete
+        </button>
+
+        <button class="food"
+          onclick="selecionarComida(this, 'Frango com Batata frita')">
+          🍗 Frango com Batata Frita
+        </button>
+
+      </div>
+
+      <button class="primary" onclick="irPara(3)">
+        Próximo →
+      </button>
+
+    </div>
+
+
+    <!-- PASSO 3 -->
+    <div class="step" id="step3">
+
+      <div class="heart">📅</div>
+
+      <h2>Agora escolhe o dia e a hora</h2>
+
+      <div class="field">
+
+        <label for="data">
+          📅 Data
+        </label>
+
+        <input type="date" id="data">
+
+      </div>
+
+      <div class="field">
+
+        <label for="hora">
+          🕐 Hora
+        </label>
+
+        <input type="time" id="hora">
+
+      </div>
+
+      <div class="resumo">
+
+        <strong>Até agora:</strong>
+
+        <p id="detalhesEscolha">
+          Ainda falta escolher a comida.
+        </p>
+
+      </div>
+
+      <button class="primary" onclick="finalizar()">
+        Confirmar ❤️
+      </button>
+
+      <div class="loading" id="loading">
+        Só um segundo... estou a registrar tudo. 😌
+      </div>
+
+    </div>
+
+
+    <!-- PASSO 4 -->
+    <div class="step" id="step4">
+
+      <div class="success">
+        🎉
+      </div>
+
+      <h2>Então está combinado!</h2>
+
+      <p>
+        Pronto. Agora já não podes dizer que não sabias. 😂
+      </p>
+
+      <div class="resumo">
+
+        <p>
+          🍽️ <strong>Comida:</strong>
+          <span id="finalComida"></span>
+        </p>
+
+        <p>
+          📅 <strong>Data:</strong>
+          <span id="finalData"></span>
+        </p>
+
+        <p>
+          🕐 <strong>Hora:</strong>
+          <span id="finalHora"></span>
+        </p>
+
+      </div>
+
+      <a
+        id="calendarLink"
+        class="calendar"
+        target="_blank">
+        📅 Adicionar ao Google Calendar
+      </a>
+
+      <div class="final-message">
+
+        <p>
+          Agora falando sério por uns 30 segundos...
+        </p>
+
+        <p>
+          Este convite é simples de propósito.
+        </p>
+
+        <p>
+          Não quero transformar um simples encontro numa reunião
+          de Estado. 😂
+        </p>
+
+        <p>
+          Só quero que possamos sair, comer alguma coisa,
+          conversar e aproveitar um pouco o momento.
+        </p>
+
+        <p>
+          Sem discurso dramático.<br>
+          Sem pressão.<br>
+          Sem promessas impossíveis.
+        </p>
+
+        <p>
+          Só nós, uma comida qualquer e uma boa conversa. ❤️
+        </p>
+
+        <div class="signature">
+          — Jaime Cussara
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- FORMULÁRIO INVISÍVEL -->
+<iframe
+  name="hidden_iframe"
+  id="hidden_iframe"
+  style="display:none;">
+</iframe>
+
+
+<form
+  id="googleForm"
+  action="https://docs.google.com/forms/d/e/1FAIpQLSdcahGJ0Q0yZY5cBW84pW4kNryH2DDA0dL6TS6-6PCX-5u4DA/formResponse"
+  method="POST"
+  target="hidden_iframe"
+  style="display:none;">
+
+  <input
+    type="text"
+    name="entry.550208775"
+    id="formNome">
+
+  <input
+    type="text"
+    name="entry.50263781"
+    id="formComida">
+
+  <input
+    type="text"
+    name="entry.1092679525"
+    id="formData">
+
+  <input
+    type="text"
+    name="entry.729490331"
+    id="formHora">
+
+</form>
+
+
+<script>
+
+  // ============================================
+  // NOME DA PESSOA
+  // ============================================
+
+  const nomeDaPessoa = "Benilda Chico Manjemanje";
+
+  let comidaSelecionada = "";
+
+
+  // ============================================
+  // MUDAR DE PASSO
+  // ============================================
+
+  function irPara(numero) {
+
+    document.querySelectorAll(".step").forEach(function(step) {
+      step.classList.remove("active");
+    });
+
+    document.getElementById("step" + numero).classList.add("active");
+
+  }
+
+
+  // ============================================
+  // ESCOLHER COMIDA
+  // ============================================
+
+  function selecionarComida(botao, comida) {
+
+    comidaSelecionada = comida;
+
+    document.querySelectorAll(".food").forEach(function(item) {
+      item.classList.remove("selected");
+    });
+
+    botao.classList.add("selected");
+
+    document.getElementById("detalhesEscolha").innerHTML =
+      "🍽️ <strong>Comida:</strong> " + comida +
+      "<br><br>Agora falta escolher a data e a hora.";
+
+  }
+
+
+  // ============================================
+  // BOTÃO NÃO FUGINDO 😂
+  // ============================================
+
+  function fugir() {
+
+    const botao = document.getElementById("nao");
+
+    const x = Math.floor(Math.random() * 180) - 90;
+    const y = Math.floor(Math.random() * 120) - 60;
+
+    botao.style.transform =
+      "translate(" + x + "px, " + y + "px)";
+
+  }
+
+
+  // ============================================
+  // FINALIZAR
+  // ============================================
+
+  function finalizar() {
+
+    const data = document.getElementById("data").value;
+    const hora = document.getElementById("hora").value;
+
+    if (!comidaSelecionada) {
+
+      alert("Primeiro escolhe alguma coisa para comer 😂");
+      return;
+
+    }
+
+    if (!data) {
+
+      alert("Escolhe uma data primeiro 📅");
+      return;
+
+    }
+
+    if (!hora) {
+
+      alert("Escolhe uma hora primeiro 🕐");
+      return;
+
+    }
+
+
+    document.getElementById("loading").style.display = "block";
+
+
+    // PREENCHER GOOGLE FORMS
+
+    document.getElementById("formNome").value =
+      nomeDaPessoa;
+
+    document.getElementById("formComida").value =
+      comidaSelecionada;
+
+    document.getElementById("formData").value =
+      data;
+
+    document.getElementById("formHora").value =
+      hora;
+
+
+    // ENVIAR PARA GOOGLE FORMS
+
+    document.getElementById("googleForm").submit();
+
+
+    // MOSTRAR RESULTADO
+
+    document.getElementById("finalComida").innerText =
+      comidaSelecionada;
+
+    document.getElementById("finalData").innerText =
+      formatarData(data);
+
+    document.getElementById("finalHora").innerText =
+      hora;
+
+
+    // GOOGLE CALENDAR
+
+    criarGoogleCalendar(
+      data,
+      hora,
+      comidaSelecionada
+    );
+
+
+    setTimeout(function() {
+
+      irPara(4);
+
+    }, 900);
+
+  }
+
+
+  // ============================================
+  // FORMATAR DATA
+  // ============================================
+
+  function formatarData(data) {
+
+    const partes = data.split("-");
+
+    return partes[2] + "/" +
+           partes[1] + "/" +
+           partes[0];
+
+  }
+
+
+  // ============================================
+  // GOOGLE CALENDAR
+  // ============================================
+
+  function criarGoogleCalendar(data, hora, comida) {
+
+    const [ano, mes, dia] = data.split("-");
+    const [horaInicio, minutoInicio] = hora.split(":");
+
+    const inicioDate = new Date(
+      Number(ano),
+      Number(mes) - 1,
+      Number(dia),
+      Number(horaInicio),
+      Number(minutoInicio)
+    );
+
+
+    // 2 horas de duração
+
+    const fimDate = new Date(
+      inicioDate.getTime() +
+      (2 * 60 * 60 * 1000)
+    );
+
+
+    function formatCalendarDate(date) {
+
+      const y = date.getFullYear();
+
+      const m =
+        String(date.getMonth() + 1)
+        .padStart(2, "0");
+
+      const d =
+        String(date.getDate())
+        .padStart(2, "0");
+
+      const h =
+        String(date.getHours())
+        .padStart(2, "0");
+
+      const min =
+        String(date.getMinutes())
+        .padStart(2, "0");
+
+
+      return y + m + d +
+        "T" + h + min + "00";
+
+    }
+
+
+    const inicioCalendar =
+      formatCalendarDate(inicioDate);
+
+    const fimCalendar =
+      formatCalendarDate(fimDate);
+
+
+    const titulo =
+      "Encontro - Jaime & Benilda ❤️";
+
+
+    const detalhes =
+      "Comida: " + comida +
+      "\\n\\nUm convite simples para uma boa conversa. ❤️";
+
+
+    const url =
+      "https://calendar.google.com/calendar/render" +
+      "?action=TEMPLATE" +
+      "&text=" +
+      encodeURIComponent(titulo) +
+      "&dates=" +
+      inicioCalendar +
+      "/" +
+      fimCalendar +
+      "&details=" +
+      encodeURIComponent(detalhes);
+
+
+    document.getElementById("calendarLink").href = url;
+
+  }
+
+</script>
+
+</body>
+</html>
