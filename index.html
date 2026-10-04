@@ -4,76 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Um convite para Benilda ❤️</title>
+  <title>Um convite para Maria Fina Luis ❤️</title>
 
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #ffd6e7, #fff);
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #fff5f8);
       color: #333;
     }
 
-    .container {
-      width: 100%;
-      max-width: 520px;
-    }
-
     .card {
+      width: 100%;
+      max-width: 500px;
       background: white;
       border-radius: 25px;
       padding: 30px 25px;
+      box-shadow: 0 15px 40px rgba(180, 70, 110, 0.2);
       text-align: center;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
       position: relative;
       overflow: hidden;
     }
 
     .heart {
-      font-size: 50px;
-      margin-bottom: 5px;
+      font-size: 55px;
+      margin-bottom: 15px;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.12);
+      }
     }
 
     h1 {
-      color: #e91e63;
-      margin: 10px 0;
+      color: #d6336c;
       font-size: 28px;
-    }
-
-    h2 {
-      color: #e91e63;
-      font-size: 23px;
       margin-bottom: 15px;
     }
 
+    h2 {
+      color: #d6336c;
+      font-size: 23px;
+      margin-bottom: 20px;
+    }
+
     p {
-      line-height: 1.6;
+      line-height: 1.7;
       font-size: 16px;
+      margin-bottom: 18px;
     }
 
-    .intro {
-      text-align: left;
+    .highlight {
+      color: #d6336c;
+      font-weight: bold;
     }
 
-    .step {
+    .screen {
       display: none;
-      animation: aparecer 0.4s ease;
     }
 
-    .step.active {
+    .screen.active {
       display: block;
+      animation: fadeIn 0.5s ease;
     }
 
-    @keyframes aparecer {
+    @keyframes fadeIn {
       from {
         opacity: 0;
         transform: translateY(10px);
@@ -85,55 +95,82 @@
       }
     }
 
-    button {
-      border: none;
-      padding: 14px 22px;
-      border-radius: 30px;
-      font-size: 16px;
-      cursor: pointer;
-      margin: 8px;
-      transition: 0.2s;
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+      min-height: 55px;
+      position: relative;
     }
 
-    button:hover {
+    button {
+      border: none;
+      border-radius: 30px;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .yes-btn {
+      background: #d6336c;
+      color: white;
+    }
+
+    .yes-btn:hover {
+      background: #b92558;
       transform: scale(1.05);
     }
 
-    .primary {
-      background: #e91e63;
-      color: white;
-    }
-
-    .yes {
-      background: #e91e63;
-      color: white;
-      min-width: 130px;
-    }
-
-    #nao {
+    .no-btn {
       background: #eee;
       color: #555;
       position: relative;
     }
 
-    .options {
+    .no-btn:hover {
+      background: #ddd;
+    }
+
+    .option-grid {
       display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
       margin-top: 20px;
     }
 
-    .food {
-      width: 100%;
-      background: #fff;
-      border: 2px solid #f3c1d3;
-      color: #444;
-      margin: 0;
+    .food-option {
+      padding: 18px 10px;
+      border: 2px solid #f0b6ca;
+      border-radius: 18px;
+      background: #fff7fa;
+      cursor: pointer;
+      transition: 0.25s ease;
+      font-size: 15px;
+      font-weight: bold;
     }
 
-    .food.selected {
-      background: #e91e63;
+    .food-option:hover {
+      transform: translateY(-3px);
+      border-color: #d6336c;
+      background: #ffe8f0;
+    }
+
+    .food-option.selected {
+      border-color: #d6336c;
+      background: #d6336c;
       color: white;
-      border-color: #e91e63;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      font-weight: bold;
+      margin-top: 18px;
+      margin-bottom: 7px;
+      color: #555;
     }
 
     input {
@@ -142,72 +179,70 @@
       border: 2px solid #eee;
       border-radius: 12px;
       font-size: 16px;
-      margin-top: 8px;
       outline: none;
     }
 
     input:focus {
-      border-color: #e91e63;
+      border-color: #d6336c;
     }
 
-    .field {
-      text-align: left;
-      margin: 18px 0;
-    }
-
-    .field label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .resumo {
-      background: #fff5f8;
-      border-radius: 15px;
-      padding: 18px;
-      margin: 20px 0;
-      text-align: left;
-    }
-
-    .resumo strong {
-      color: #e91e63;
-    }
-
-    .final-message {
-      background: #fff5f8;
-      border-radius: 18px;
-      padding: 20px;
-      text-align: left;
-      margin-top: 20px;
-    }
-
-    .loading {
-      display: none;
-      margin-top: 15px;
-      color: #e91e63;
-      font-weight: bold;
-    }
-
-    .success {
-      font-size: 60px;
-      margin-bottom: 10px;
-    }
-
-    .calendar {
-      display: inline-block;
-      text-decoration: none;
-      background: #4285f4;
+    .next-btn {
+      width: 100%;
+      margin-top: 25px;
+      background: #d6336c;
       color: white;
+    }
+
+    .next-btn:hover {
+      background: #b92558;
+    }
+
+    .back-btn {
+      margin-top: 12px;
+      background: transparent;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .success-icon {
+      font-size: 70px;
+      margin-bottom: 15px;
+    }
+
+    .calendar-btn {
+      display: inline-block;
+      margin-top: 15px;
       padding: 14px 22px;
       border-radius: 30px;
-      margin-top: 10px;
+      background: #4285f4;
+      color: white;
+      text-decoration: none;
       font-weight: bold;
+      transition: 0.25s ease;
     }
 
-    .signature {
-      text-align: right;
+    .calendar-btn:hover {
+      background: #2f6fd6;
+      transform: scale(1.03);
+    }
+
+    .small-text {
+      font-size: 13px;
+      color: #888;
       margin-top: 20px;
-      font-style: italic;
+    }
+
+    .error {
+      color: #d6336c;
+      font-size: 14px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #999;
     }
 
     @media (max-width: 480px) {
@@ -216,7 +251,23 @@
       }
 
       h1 {
-        font-size: 25px;
+        font-size: 24px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .option-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .buttons {
+        gap: 10px;
+      }
+
+      button {
+        padding: 13px 20px;
       }
     }
   </style>
@@ -224,532 +275,560 @@
 
 <body>
 
-<div class="container">
   <div class="card">
 
-    <!-- PASSO 0 -->
-    <div class="step active" id="step0">
+    <!-- TELA 1 -->
+    <div class="screen active" id="screen1">
 
       <div class="heart">❤️</div>
 
-      <h1>Benilda Chico Manjemanje...</h1>
-
-      <div class="intro">
-
-        <p>
-          Eu podia simplesmente mandar uma mensagem e dizer:
-          <strong>“Vamos sair?”</strong>
-        </p>
-
-        <p>
-          Mas achei que uma simples mensagem seria demasiado normal. 😂
-        </p>
-
-        <p>
-          Então resolvi fazer isto.
-        </p>
-
-        <p>
-          Não estou a tentar fazer uma novela nem complicar as coisas.
-          É só um convite simples para passarmos um tempo juntos,
-          conversar, rir um pouco e comer alguma coisa.
-        </p>
-
-        <p>
-          Afinal... uma boa comida nunca estragou uma conversa. 😌😂
-        </p>
-
-      </div>
-
-      <button class="primary" onclick="irPara(1)">
-        Continua... 🤭
-      </button>
-
-    </div>
-
-
-    <!-- PASSO 1 -->
-    <div class="step" id="step1">
-
-      <div class="heart">😏</div>
-
-      <h2>Benilda, vai aceitar sair comigo?</h2>
+      <h1>Maria Fina Luis...</h1>
 
       <p>
-        Prometo que não é uma armadilha.<br>
-        Pelo menos não uma armadilha muito séria. 😂
+        Eu poderia simplesmente mandar uma mensagem e perguntar:
+        <span class="highlight">"Queres sair comigo?"</span>
       </p>
-
-      <button class="yes" onclick="irPara(2)">
-        SIM ❤️
-      </button>
-
-      <button id="nao" onmouseover="fugir()" onclick="fugir()">
-        NÃO 😌
-      </button>
-
-    </div>
-
-
-    <!-- PASSO 2 -->
-    <div class="step" id="step2">
-
-      <div class="heart">🍔</div>
-
-      <h2>Primeiro vamos resolver uma questão importante...</h2>
 
       <p>
-        O que vamos comer?
+        Mas achei que seria muito simples.
+        Então decidi fazer um site inteiro para isso. 😂
       </p>
-
-      <div class="options">
-
-        <button class="food"
-          onclick="selecionarComida(this, 'Pao com Badjia')">
-          🥖 Pão com Badjia
-        </button>
-
-        <button class="food"
-          onclick="selecionarComida(this, 'Humburguer')">
-          🍔 Hambúrguer
-        </button>
-
-        <button class="food"
-          onclick="selecionarComida(this, 'Sorvete')">
-          🍦 Sorvete
-        </button>
-
-        <button class="food"
-          onclick="selecionarComida(this, 'Frango com Batata frita')">
-          🍗 Frango com Batata Frita
-        </button>
-
-      </div>
-
-      <button class="primary" onclick="irPara(3)">
-        Próximo →
-      </button>
-
-    </div>
-
-
-    <!-- PASSO 3 -->
-    <div class="step" id="step3">
-
-      <div class="heart">📅</div>
-
-      <h2>Agora escolhe o dia e a hora</h2>
-
-      <div class="field">
-
-        <label for="data">
-          📅 Data
-        </label>
-
-        <input type="date" id="data">
-
-      </div>
-
-      <div class="field">
-
-        <label for="hora">
-          🕐 Hora
-        </label>
-
-        <input type="time" id="hora">
-
-      </div>
-
-      <div class="resumo">
-
-        <strong>Até agora:</strong>
-
-        <p id="detalhesEscolha">
-          Ainda falta escolher a comida.
-        </p>
-
-      </div>
-
-      <button class="primary" onclick="finalizar()">
-        Confirmar ❤️
-      </button>
-
-      <div class="loading" id="loading">
-        Só um segundo... estou a registrar tudo. 😌
-      </div>
-
-    </div>
-
-
-    <!-- PASSO 4 -->
-    <div class="step" id="step4">
-
-      <div class="success">
-        🎉
-      </div>
-
-      <h2>Então está combinado!</h2>
 
       <p>
-        Pronto. Agora já não podes dizer que não sabias. 😂
+        Sim... aparentemente eu tinha tempo suficiente para chegar a esse ponto.
       </p>
 
-      <div class="resumo">
+      <p>
+        Então vamos direto ao assunto.
+      </p>
 
-        <p>
-          🍽️ <strong>Comida:</strong>
-          <span id="finalComida"></span>
-        </p>
+      <button class="next-btn" onclick="nextScreen(2)">
+        Continuar ❤️
+      </button>
 
-        <p>
-          📅 <strong>Data:</strong>
-          <span id="finalData"></span>
-        </p>
+    </div>
 
-        <p>
-          🕐 <strong>Hora:</strong>
-          <span id="finalHora"></span>
-        </p>
+
+    <!-- TELA 2 -->
+    <div class="screen" id="screen2">
+
+      <div class="heart">🥹❤️</div>
+
+      <h2>Maria Fina Luis, vai aceitar sair comigo?</h2>
+
+      <p>
+        Prometo que não é uma armadilha.
+        Pelo menos não uma muito séria. 😂
+      </p>
+
+      <div class="buttons">
+
+        <button class="yes-btn" onclick="nextScreen(3)">
+          SIM ❤️
+        </button>
+
+        <button
+          class="no-btn"
+          id="noButton"
+          onmouseover="moveNoButton()"
+          onclick="moveNoButton()"
+        >
+          NÃO 😅
+        </button>
 
       </div>
+
+      <p class="small-text">
+        Dica: o botão "NÃO" parece estar com medo...
+      </p>
+
+    </div>
+
+
+    <!-- TELA 3 -->
+    <div class="screen" id="screen3">
+
+      <div class="heart">🍔🍦</div>
+
+      <h2>Então vamos escolher a comida 😋</h2>
+
+      <p>
+        Porque uma boa conversa fica ainda melhor quando existe comida.
+      </p>
+
+      <div class="option-grid">
+
+        <div
+          class="food-option"
+          data-value="Pao com Badjia"
+          onclick="selectFood(this)"
+        >
+          🥖<br>
+          Pão com Badjia
+        </div>
+
+        <div
+          class="food-option"
+          data-value="Humburguer"
+          onclick="selectFood(this)"
+        >
+          🍔<br>
+          Hambúrguer
+        </div>
+
+        <div
+          class="food-option"
+          data-value="Sorvete"
+          onclick="selectFood(this)"
+        >
+          🍦<br>
+          Sorvete
+        </div>
+
+        <div
+          class="food-option"
+          data-value="Frango com Batata frita"
+          onclick="selectFood(this)"
+        >
+          🍗🍟<br>
+          Frango com Batata Frita
+        </div>
+
+      </div>
+
+      <p class="error" id="foodError">
+        Escolhe alguma coisa primeiro 😅
+      </p>
+
+      <button class="next-btn" onclick="goToDate()">
+        Próximo ❤️
+      </button>
+
+      <button class="back-btn" onclick="nextScreen(2)">
+        ← Voltar
+      </button>
+
+    </div>
+
+
+    <!-- TELA 4 -->
+    <div class="screen" id="screen4">
+
+      <div class="heart">📅❤️</div>
+
+      <h2>Agora falta combinar o dia</h2>
+
+      <p>
+        Escolhe uma data e uma hora que funcionem para ti.
+      </p>
+
+      <label for="date">
+        📅 Data do encontro
+      </label>
+
+      <input
+        type="date"
+        id="date"
+      >
+
+      <label for="time">
+        ⏰ Hora do encontro
+      </label>
+
+      <input
+        type="time"
+        id="time"
+      >
+
+      <p class="error" id="dateError">
+        Escolhe a data e a hora, por favor 😅
+      </p>
+
+      <button class="next-btn" onclick="submitForm()">
+        Confirmar o convite ❤️
+      </button>
+
+      <button class="back-btn" onclick="nextScreen(3)">
+        ← Voltar
+      </button>
+
+    </div>
+
+
+    <!-- TELA 5 -->
+    <div class="screen" id="screen5">
+
+      <div class="success-icon">
+        🥰
+      </div>
+
+      <h1>Então está combinado! ❤️</h1>
+
+      <p>
+        Maria Fina Luis, obrigado por aceitar.
+      </p>
+
+      <p>
+        Agora já não vale dizer que não sabias. 😂
+      </p>
+
+      <p>
+        Nós já passámos por muita coisa.
+      </p>
+
+      <p>
+        Hoje estamos separados, cada um seguindo a sua vida,
+        mas existe uma história que sempre vai existir entre nós:
+        <span class="highlight">o nosso filho.</span>
+      </p>
+
+      <p>
+        E aqui estou eu a fazer um site inteiro só para te convidar
+        para comer qualquer coisa. 😂
+      </p>
+
+      <p>
+        Não fiz isto para complicar as coisas.
+        Nem para criar expectativas.
+      </p>
+
+      <p>
+        Só tu, eu, uma comida qualquer e uma conversa tranquila.
+      </p>
+
+      <p>
+        Porque antes de sermos ex,
+        somos duas pessoas que já viveram muita coisa juntas.
+      </p>
+
+      <p>
+        E temos uma pequena pessoa que merece ver os dois adultos
+        conseguirem pelo menos tomar um chá sem começar uma reunião
+        de emergência. 😂
+      </p>
+
+      <p>
+        Sem discurso dramático.
+        Sem promessa.
+        Sem pressão.
+        <br>
+        <span class="highlight">Só um convite. ❤️</span>
+      </p>
 
       <a
+        href="#"
+        class="calendar-btn"
         id="calendarLink"
-        class="calendar"
-        target="_blank">
+        target="_blank"
+      >
         📅 Adicionar ao Google Calendar
       </a>
 
-      <div class="final-message">
-
-        <p>
-          Agora falando sério por uns 30 segundos...
-        </p>
-
-        <p>
-          Este convite é simples de propósito.
-        </p>
-
-        <p>
-          Não quero transformar um simples encontro numa reunião
-          de Estado. 😂
-        </p>
-
-        <p>
-          Só quero que possamos sair, comer alguma coisa,
-          conversar e aproveitar um pouco o momento.
-        </p>
-
-        <p>
-          Sem discurso dramático.<br>
-          Sem pressão.<br>
-          Sem promessas impossíveis.
-        </p>
-
-        <p>
-          Só nós, uma comida qualquer e uma boa conversa. ❤️
-        </p>
-
-        <div class="signature">
-          — Jaime Cussara
-        </div>
-
+      <div class="footer">
+        — Jaime Cussara ❤️
       </div>
 
     </div>
 
   </div>
-</div>
 
 
-<!-- FORMULÁRIO INVISÍVEL -->
-<iframe
-  name="hidden_iframe"
-  id="hidden_iframe"
-  style="display:none;">
-</iframe>
+  <!--
+    FORMULÁRIO INVISÍVEL
+    Envia os dados diretamente para o Google Forms
+  -->
+
+  <iframe
+    name="hidden_iframe"
+    id="hidden_iframe"
+    style="display:none;"
+  ></iframe>
+
+  <form
+    id="googleForm"
+    action="https://docs.google.com/forms/d/e/1FAIpQLSdcahGJ0Q0yZY5cBW84pW4kNryH2DDA0dL6TS6-6PCX-5u4DA/formResponse"
+    method="POST"
+    target="hidden_iframe"
+    style="display:none;"
+  >
+
+    <input
+      type="hidden"
+      name="entry.550208775"
+      id="formNome"
+    >
+
+    <input
+      type="hidden"
+      name="entry.50263781"
+      id="formComida"
+    >
+
+    <input
+      type="hidden"
+      name="entry.1092679525"
+      id="formData"
+    >
+
+    <input
+      type="hidden"
+      name="entry.729490331"
+      id="formHora"
+    >
+
+  </form>
 
 
-<form
-  id="googleForm"
-  action="https://docs.google.com/forms/d/e/1FAIpQLSdcahGJ0Q0yZY5cBW84pW4kNryH2DDA0dL6TS6-6PCX-5u4DA/formResponse"
-  method="POST"
-  target="hidden_iframe"
-  style="display:none;">
+  <script>
 
-  <input
-    type="text"
-    name="entry.550208775"
-    id="formNome">
+    // ============================================
+    // NOME DA PESSOA
+    // ============================================
 
-  <input
-    type="text"
-    name="entry.50263781"
-    id="formComida">
-
-  <input
-    type="text"
-    name="entry.1092679525"
-    id="formData">
-
-  <input
-    type="text"
-    name="entry.729490331"
-    id="formHora">
-
-</form>
+    const nomeDaPessoa = "Maria Fina Luis";
 
 
-<script>
+    // ============================================
+    // VARIÁVEIS
+    // ============================================
 
-  // ============================================
-  // NOME DA PESSOA
-  // ============================================
-
-  const nomeDaPessoa = "Benilda Chico Manjemanje";
-
-  let comidaSelecionada = "";
+    let selectedFood = "";
 
 
-  // ============================================
-  // MUDAR DE PASSO
-  // ============================================
+    // ============================================
+    // TROCAR DE TELA
+    // ============================================
 
-  function irPara(numero) {
+    function nextScreen(screenNumber) {
 
-    document.querySelectorAll(".step").forEach(function(step) {
-      step.classList.remove("active");
-    });
+      document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+      });
 
-    document.getElementById("step" + numero).classList.add("active");
+      document
+        .getElementById("screen" + screenNumber)
+        .classList.add("active");
 
-  }
-
-
-  // ============================================
-  // ESCOLHER COMIDA
-  // ============================================
-
-  function selecionarComida(botao, comida) {
-
-    comidaSelecionada = comida;
-
-    document.querySelectorAll(".food").forEach(function(item) {
-      item.classList.remove("selected");
-    });
-
-    botao.classList.add("selected");
-
-    document.getElementById("detalhesEscolha").innerHTML =
-      "🍽️ <strong>Comida:</strong> " + comida +
-      "<br><br>Agora falta escolher a data e a hora.";
-
-  }
-
-
-  // ============================================
-  // BOTÃO NÃO FUGINDO 😂
-  // ============================================
-
-  function fugir() {
-
-    const botao = document.getElementById("nao");
-
-    const x = Math.floor(Math.random() * 180) - 90;
-    const y = Math.floor(Math.random() * 120) - 60;
-
-    botao.style.transform =
-      "translate(" + x + "px, " + y + "px)";
-
-  }
-
-
-  // ============================================
-  // FINALIZAR
-  // ============================================
-
-  function finalizar() {
-
-    const data = document.getElementById("data").value;
-    const hora = document.getElementById("hora").value;
-
-    if (!comidaSelecionada) {
-
-      alert("Primeiro escolhe alguma coisa para comer 😂");
-      return;
-
-    }
-
-    if (!data) {
-
-      alert("Escolhe uma data primeiro 📅");
-      return;
-
-    }
-
-    if (!hora) {
-
-      alert("Escolhe uma hora primeiro 🕐");
-      return;
-
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     }
 
 
-    document.getElementById("loading").style.display = "block";
+    // ============================================
+    // BOTÃO NÃO FOGE
+    // ============================================
+
+    function moveNoButton() {
+
+      const button = document.getElementById("noButton");
+
+      const card = document.querySelector(".card");
+
+      const maxX = card.clientWidth - button.offsetWidth - 30;
+      const maxY = 100;
+
+      const randomX = Math.floor(Math.random() * Math.max(maxX, 100)) - 50;
+      const randomY = Math.floor(Math.random() * maxY) - 50;
+
+      button.style.position = "absolute";
+      button.style.left = randomX + "px";
+      button.style.top = randomY + "px";
+    }
 
 
-    // PREENCHER GOOGLE FORMS
+    // ============================================
+    // SELECIONAR COMIDA
+    // ============================================
 
-    document.getElementById("formNome").value =
-      nomeDaPessoa;
+    function selectFood(element) {
 
-    document.getElementById("formComida").value =
-      comidaSelecionada;
+      document.querySelectorAll(".food-option").forEach(option => {
+        option.classList.remove("selected");
+      });
 
-    document.getElementById("formData").value =
-      data;
+      element.classList.add("selected");
 
-    document.getElementById("formHora").value =
-      hora;
+      selectedFood = element.dataset.value;
+
+      document.getElementById("foodError").style.display = "none";
+    }
 
 
+    // ============================================
+    // IR PARA DATA
+    // ============================================
+
+    function goToDate() {
+
+      if (!selectedFood) {
+
+        document.getElementById("foodError").style.display = "block";
+
+        return;
+      }
+
+      nextScreen(4);
+    }
+
+
+    // ============================================
     // ENVIAR PARA GOOGLE FORMS
+    // ============================================
 
-    document.getElementById("googleForm").submit();
+    function submitForm() {
 
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
 
-    // MOSTRAR RESULTADO
+      const error = document.getElementById("dateError");
 
-    document.getElementById("finalComida").innerText =
-      comidaSelecionada;
+      if (!date || !time) {
 
-    document.getElementById("finalData").innerText =
-      formatarData(data);
+        error.style.display = "block";
 
-    document.getElementById("finalHora").innerText =
-      hora;
+        return;
+      }
 
-
-    // GOOGLE CALENDAR
-
-    criarGoogleCalendar(
-      data,
-      hora,
-      comidaSelecionada
-    );
+      error.style.display = "none";
 
 
-    setTimeout(function() {
+      // Preencher formulário
 
-      irPara(4);
+      document.getElementById("formNome").value = nomeDaPessoa;
 
-    }, 900);
+      document.getElementById("formComida").value = selectedFood;
 
-  }
+      document.getElementById("formData").value = date;
 
-
-  // ============================================
-  // FORMATAR DATA
-  // ============================================
-
-  function formatarData(data) {
-
-    const partes = data.split("-");
-
-    return partes[2] + "/" +
-           partes[1] + "/" +
-           partes[0];
-
-  }
+      document.getElementById("formHora").value = time;
 
 
-  // ============================================
-  // GOOGLE CALENDAR
-  // ============================================
+      // Enviar para Google Forms
 
-  function criarGoogleCalendar(data, hora, comida) {
-
-    const [ano, mes, dia] = data.split("-");
-    const [horaInicio, minutoInicio] = hora.split(":");
-
-    const inicioDate = new Date(
-      Number(ano),
-      Number(mes) - 1,
-      Number(dia),
-      Number(horaInicio),
-      Number(minutoInicio)
-    );
+      document.getElementById("googleForm").submit();
 
 
-    // 2 horas de duração
+      // Criar link do Google Calendar
 
-    const fimDate = new Date(
-      inicioDate.getTime() +
-      (2 * 60 * 60 * 1000)
-    );
+      createCalendarLink(date, time);
 
 
-    function formatCalendarDate(date) {
+      // Mostrar tela final
 
-      const y = date.getFullYear();
-
-      const m =
-        String(date.getMonth() + 1)
-        .padStart(2, "0");
-
-      const d =
-        String(date.getDate())
-        .padStart(2, "0");
-
-      const h =
-        String(date.getHours())
-        .padStart(2, "0");
-
-      const min =
-        String(date.getMinutes())
-        .padStart(2, "0");
-
-
-      return y + m + d +
-        "T" + h + min + "00";
-
+      nextScreen(5);
     }
 
 
-    const inicioCalendar =
-      formatCalendarDate(inicioDate);
+    // ============================================
+    // GOOGLE CALENDAR
+    // ============================================
 
-    const fimCalendar =
-      formatCalendarDate(fimDate);
+    function createCalendarLink(date, time) {
 
+      const [year, month, day] = date.split("-");
 
-    const titulo =
-      "Encontro - Jaime & Benilda ❤️";
-
-
-    const detalhes =
-      "Comida: " + comida +
-      "\\n\\nUm convite simples para uma boa conversa. ❤️";
+      const [hour, minute] = time.split(":");
 
 
-    const url =
-      "https://calendar.google.com/calendar/render" +
-      "?action=TEMPLATE" +
-      "&text=" +
-      encodeURIComponent(titulo) +
-      "&dates=" +
-      inicioCalendar +
-      "/" +
-      fimCalendar +
-      "&details=" +
-      encodeURIComponent(detalhes);
+      // Data/hora inicial
+
+      const startDate = new Date(
+        Number(year),
+        Number(month) - 1,
+        Number(day),
+        Number(hour),
+        Number(minute)
+      );
 
 
-    document.getElementById("calendarLink").href = url;
+      // Duração aproximada: 1h30
 
-  }
+      const endDate = new Date(
+        startDate.getTime() + 90 * 60 * 1000
+      );
 
-</script>
+
+      function formatCalendarDate(dateObject) {
+
+        const y = dateObject.getFullYear();
+
+        const m = String(
+          dateObject.getMonth() + 1
+        ).padStart(2, "0");
+
+        const d = String(
+          dateObject.getDate()
+        ).padStart(2, "0");
+
+        const h = String(
+          dateObject.getHours()
+        ).padStart(2, "0");
+
+        const min = String(
+          dateObject.getMinutes()
+        ).padStart(2, "0");
+
+        const s = String(
+          dateObject.getSeconds()
+        ).padStart(2, "0");
+
+
+        return `${y}${m}${d}T${h}${min}${s}`;
+      }
+
+
+      const start = formatCalendarDate(startDate);
+
+      const end = formatCalendarDate(endDate);
+
+
+      const title =
+        "Encontro - Jaime & Maria Fina Luis ❤️";
+
+
+      const details =
+        "Um convite simples para comer qualquer coisa e conversar. ❤️";
+
+
+      const calendarUrl =
+        "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+        "&text=" + encodeURIComponent(title) +
+        "&dates=" + start + "/" + end +
+        "&details=" + encodeURIComponent(details);
+
+
+      document.getElementById("calendarLink").href = calendarUrl;
+    }
+
+
+    // ============================================
+    // DEFINIR DATA MÍNIMA COMO HOJE
+    // ============================================
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const dateInput = document.getElementById("date");
+
+      const today = new Date();
+
+      const year = today.getFullYear();
+
+      const month = String(
+        today.getMonth() + 1
+      ).padStart(2, "0");
+
+      const day = String(
+        today.getDate()
+      ).padStart(2, "0");
+
+
+      dateInput.min = `${year}-${month}-${day}`;
+
+    });
+
+  </script>
 
 </body>
 </html>
