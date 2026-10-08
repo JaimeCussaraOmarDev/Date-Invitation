@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Um convite para Maria Fina Luis ❤️</title>
+  <title>Benilda, temos um pequeno problema... ❤️</title>
 
   <style>
     * {
@@ -15,52 +15,171 @@
 
     body {
       min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, #ffd6e7, transparent 35%),
+        radial-gradient(circle at bottom right, #ffc1d8, transparent 35%),
+        linear-gradient(135deg, #fff0f6, #ffffff);
+
       display: flex;
       justify-content: center;
       align-items: center;
+
       padding: 20px;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #ffd6e7, #fff5f8);
+      overflow-x: hidden;
       color: #333;
     }
 
+    /* =========================
+       CORAÇÕES FLUTUANTES
+    ========================= */
+
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 20px;
+      opacity: 0.5;
+      animation: floatUp linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.7;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* =========================
+       CARD PRINCIPAL
+    ========================= */
+
     .card {
       width: 100%;
-      max-width: 500px;
-      background: white;
-      border-radius: 25px;
-      padding: 30px 25px;
-      box-shadow: 0 15px 40px rgba(180, 70, 110, 0.2);
+      max-width: 540px;
+
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(15px);
+
+      border-radius: 30px;
+
+      padding: 32px 25px;
+
+      box-shadow:
+        0 25px 70px rgba(180, 40, 100, 0.18);
+
       text-align: center;
+
       position: relative;
+      z-index: 2;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(255,255,255,0.8);
+    }
+
+    /* =========================
+       PROGRESSO
+    ========================= */
+
+    .progress-container {
+      width: 100%;
+      height: 7px;
+
+      background: #f4dce6;
+
+      border-radius: 20px;
+
+      margin-bottom: 25px;
+
       overflow: hidden;
     }
 
-    .heart {
-      font-size: 55px;
-      margin-bottom: 15px;
-      animation: heartbeat 1.5s infinite;
+    .progress {
+      height: 100%;
+      width: 20%;
+
+      background: linear-gradient(
+        90deg,
+        #ff4f91,
+        #d6336c
+      );
+
+      border-radius: 20px;
+
+      transition: width 0.5s ease;
     }
 
-    @keyframes heartbeat {
-      0%, 100% {
-        transform: scale(1);
+    /* =========================
+       TELAS
+    ========================= */
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+      animation: screenIn 0.55s ease;
+    }
+
+    @keyframes screenIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
       }
-      50% {
-        transform: scale(1.12);
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
       }
     }
+
+    /* =========================
+       EMOJIS
+    ========================= */
+
+    .big-emoji {
+      font-size: 70px;
+      margin-bottom: 15px;
+
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* =========================
+       TEXTOS
+    ========================= */
 
     h1 {
       color: #d6336c;
-      font-size: 28px;
+      font-size: 30px;
       margin-bottom: 15px;
     }
 
     h2 {
       color: #d6336c;
-      font-size: 23px;
-      margin-bottom: 20px;
+      font-size: 24px;
+      margin-bottom: 18px;
     }
 
     p {
@@ -74,356 +193,596 @@
       font-weight: bold;
     }
 
-    .screen {
-      display: none;
+    .tiny {
+      font-size: 13px;
+      color: #999;
     }
 
-    .screen.active {
-      display: block;
-      animation: fadeIn 0.5s ease;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 25px;
-      min-height: 55px;
-      position: relative;
-    }
+    /* =========================
+       BOTÕES
+    ========================= */
 
     button {
       border: none;
-      border-radius: 30px;
-      padding: 14px 28px;
+
+      border-radius: 50px;
+
+      padding: 15px 28px;
+
       font-size: 16px;
       font-weight: bold;
+
       cursor: pointer;
-      transition: 0.25s ease;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
     }
 
-    .yes-btn {
-      background: #d6336c;
-      color: white;
-    }
-
-    .yes-btn:hover {
-      background: #b92558;
-      transform: scale(1.05);
-    }
-
-    .no-btn {
-      background: #eee;
-      color: #555;
-      position: relative;
-    }
-
-    .no-btn:hover {
-      background: #ddd;
-    }
-
-    .option-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .food-option {
-      padding: 18px 10px;
-      border: 2px solid #f0b6ca;
-      border-radius: 18px;
-      background: #fff7fa;
-      cursor: pointer;
-      transition: 0.25s ease;
-      font-size: 15px;
-      font-weight: bold;
-    }
-
-    .food-option:hover {
+    button:hover {
       transform: translateY(-3px);
-      border-color: #d6336c;
-      background: #ffe8f0;
     }
 
-    .food-option.selected {
-      border-color: #d6336c;
-      background: #d6336c;
-      color: white;
-    }
-
-    label {
-      display: block;
-      text-align: left;
-      font-weight: bold;
-      margin-top: 18px;
-      margin-bottom: 7px;
-      color: #555;
-    }
-
-    input {
+    .main-btn {
       width: 100%;
-      padding: 14px;
-      border: 2px solid #eee;
-      border-radius: 12px;
-      font-size: 16px;
-      outline: none;
-    }
 
-    input:focus {
-      border-color: #d6336c;
-    }
-
-    .next-btn {
-      width: 100%;
-      margin-top: 25px;
-      background: #d6336c;
       color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff4f91,
+          #d6336c
+        );
+
+      box-shadow:
+        0 10px 25px rgba(214,51,108,0.25);
     }
 
-    .next-btn:hover {
-      background: #b92558;
+    .main-btn:hover {
+      box-shadow:
+        0 15px 30px rgba(214,51,108,0.35);
     }
 
     .back-btn {
       margin-top: 12px;
       background: transparent;
-      color: #777;
+      color: #999;
       font-size: 14px;
     }
 
-    .success-icon {
-      font-size: 70px;
-      margin-bottom: 15px;
+    /* =========================
+       PERGUNTA
+    ========================= */
+
+    .question-box {
+      background: #fff3f7;
+
+      border: 2px dashed #f2b4ca;
+
+      border-radius: 20px;
+
+      padding: 20px;
+
+      margin: 20px 0;
+    }
+
+    .buttons {
+      height: 100px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 15px;
+
+      position: relative;
+    }
+
+    .yes-btn {
+      background: #d6336c;
+      color: white;
+
+      min-width: 130px;
+    }
+
+    .no-btn {
+      background: #eee;
+      color: #555;
+
+      min-width: 130px;
+
+      position: relative;
+    }
+
+    /* =========================
+       COMIDA
+    ========================= */
+
+    .food-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 14px;
+
+      margin-top: 25px;
+    }
+
+    .food-card {
+      padding: 20px 10px;
+
+      background: #fff8fb;
+
+      border: 2px solid #f4c4d5;
+
+      border-radius: 20px;
+
+      cursor: pointer;
+
+      transition: 0.25s ease;
+
+      font-weight: bold;
+    }
+
+    .food-card .food-icon {
+      display: block;
+
+      font-size: 35px;
+
+      margin-bottom: 8px;
+    }
+
+    .food-card:hover {
+      transform: translateY(-5px) rotate(-1deg);
+
+      border-color: #d6336c;
+
+      box-shadow:
+        0 10px 25px rgba(214,51,108,0.12);
+    }
+
+    .food-card.selected {
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff4f91,
+          #d6336c
+        );
+
+      border-color: #d6336c;
+
+      transform: scale(1.03);
+    }
+
+    /* =========================
+       DATA
+    ========================= */
+
+    label {
+      display: block;
+
+      text-align: left;
+
+      margin-top: 18px;
+      margin-bottom: 7px;
+
+      font-weight: bold;
+
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+
+      padding: 15px;
+
+      border-radius: 15px;
+
+      border: 2px solid #eee;
+
+      font-size: 16px;
+
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #d6336c;
+
+      box-shadow:
+        0 0 0 4px rgba(214,51,108,0.08);
+    }
+
+    /* =========================
+       RESULTADO
+    ========================= */
+
+    .success {
+      font-size: 85px;
+
+      animation:
+        successPop 0.8s ease;
+    }
+
+    @keyframes successPop {
+      0% {
+        transform: scale(0);
+      }
+
+      70% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
 
     .calendar-btn {
       display: inline-block;
+
       margin-top: 15px;
-      padding: 14px 22px;
-      border-radius: 30px;
-      background: #4285f4;
+
+      padding: 15px 25px;
+
+      border-radius: 50px;
+
       color: white;
+
+      background: #4285f4;
+
       text-decoration: none;
+
       font-weight: bold;
+
       transition: 0.25s ease;
     }
 
     .calendar-btn:hover {
+      transform: translateY(-3px);
+
       background: #2f6fd6;
-      transform: scale(1.03);
     }
 
-    .small-text {
-      font-size: 13px;
-      color: #888;
-      margin-top: 20px;
+    /* =========================
+       CONFETES
+    ========================= */
+
+    .confetti {
+      position: fixed;
+
+      width: 10px;
+      height: 10px;
+
+      top: -20px;
+
+      z-index: 999;
+
+      animation:
+        confettiFall 3s linear forwards;
+
+      pointer-events: none;
     }
 
-    .error {
-      color: #d6336c;
-      font-size: 14px;
-      margin-top: 10px;
-      display: none;
+    @keyframes confettiFall {
+      to {
+        transform:
+          translateY(110vh)
+          rotate(720deg);
+
+        opacity: 0;
+      }
     }
 
-    .footer {
-      margin-top: 25px;
-      font-size: 13px;
-      color: #999;
-    }
+    /* =========================
+       RESPONSIVO
+    ========================= */
 
-    @media (max-width: 480px) {
+    @media (max-width: 500px) {
+
       .card {
         padding: 25px 18px;
       }
 
       h1 {
-        font-size: 24px;
+        font-size: 25px;
       }
 
       h2 {
-        font-size: 20px;
+        font-size: 21px;
       }
 
-      .option-grid {
+      .food-grid {
         grid-template-columns: 1fr;
       }
 
       .buttons {
-        gap: 10px;
+        gap: 8px;
       }
 
-      button {
-        padding: 13px 20px;
+      .yes-btn,
+      .no-btn {
+        min-width: 115px;
       }
     }
+
   </style>
 </head>
 
 <body>
 
+
+  <!-- CORAÇÕES -->
+  <div class="floating-heart" style="left:10%; animation-duration:8s;">❤️</div>
+  <div class="floating-heart" style="left:25%; animation-duration:11s;">💕</div>
+  <div class="floating-heart" style="left:45%; animation-duration:9s;">💗</div>
+  <div class="floating-heart" style="left:65%; animation-duration:13s;">❤️</div>
+  <div class="floating-heart" style="left:85%; animation-duration:10s;">💖</div>
+
+
   <div class="card">
 
-    <!-- TELA 1 -->
+
+    <!-- PROGRESSO -->
+
+    <div class="progress-container">
+      <div class="progress" id="progress"></div>
+    </div>
+
+
+    <!-- ======================================
+         TELA 1
+    ======================================= -->
+
     <div class="screen active" id="screen1">
 
-      <div class="heart">❤️</div>
+      <div class="big-emoji">
+        👀
+      </div>
 
-      <h1>Maria Fina Luis...</h1>
-
-      <p>
-        Eu poderia simplesmente mandar uma mensagem e perguntar:
-        <span class="highlight">"Queres sair comigo?"</span>
-      </p>
+      <h1>Benilda Chico Manjemanje...</h1>
 
       <p>
-        Mas achei que seria muito simples.
-        Então decidi fazer um site inteiro para isso. 😂
+        Precisamos conversar.
       </p>
 
-      <p>
-        Sim... aparentemente eu tinha tempo suficiente para chegar a esse ponto.
+      <div class="question-box">
+
+        <p>
+          Existe uma coisa que eu quero perguntar,
+          mas achei que mandar simplesmente uma mensagem
+          seria demasiado normal.
+        </p>
+
+        <p>
+          Então fiz...
+          <span class="highlight">isto. 😂</span>
+        </p>
+
+      </div>
+
+      <p class="tiny">
+        Sim, eu realmente fiz um site para isso.
       </p>
 
-      <p>
-        Então vamos direto ao assunto.
-      </p>
-
-      <button class="next-btn" onclick="nextScreen(2)">
-        Continuar ❤️
+      <button
+        class="main-btn"
+        onclick="nextScreen(2)"
+      >
+        Descobrir o motivo 👀
       </button>
 
     </div>
 
 
-    <!-- TELA 2 -->
+    <!-- ======================================
+         TELA 2
+    ======================================= -->
+
     <div class="screen" id="screen2">
 
-      <div class="heart">🥹❤️</div>
+      <div class="big-emoji">
+        🧐
+      </div>
 
-      <h2>Maria Fina Luis, vai aceitar sair comigo?</h2>
+      <h2>
+        Análise importante...
+      </h2>
 
       <p>
-        Prometo que não é uma armadilha.
-        Pelo menos não uma muito séria. 😂
+        Depois de muita pesquisa,
+        cálculos extremamente científicos
+        e aproximadamente zero consultas...
       </p>
+
+      <div class="question-box">
+
+        <p>
+          cheguei a uma conclusão:
+        </p>
+
+        <h2>
+          Tu + Eu = 🍔❤️
+        </h2>
+
+      </div>
+
+      <p>
+        Mas falta confirmar uma coisa.
+      </p>
+
+      <button
+        class="main-btn"
+        onclick="nextScreen(3)"
+      >
+        Ver a pergunta 😳
+      </button>
+
+    </div>
+
+
+    <!-- ======================================
+         TELA 3
+    ======================================= -->
+
+    <div class="screen" id="screen3">
+
+      <div class="big-emoji">
+        🥹
+      </div>
+
+      <h2>
+        Benilda, aceita sair comigo?
+      </h2>
+
+      <div class="question-box">
+
+        <p>
+          A pergunta é simples.
+        </p>
+
+        <p>
+          Mas a resposta pode mudar
+          completamente o meu dia. ❤️
+        </p>
+
+      </div>
 
       <div class="buttons">
 
-        <button class="yes-btn" onclick="nextScreen(3)">
+        <button
+          class="yes-btn"
+          onclick="acceptInvite()"
+        >
           SIM ❤️
         </button>
 
         <button
           class="no-btn"
           id="noButton"
-          onmouseover="moveNoButton()"
-          onclick="moveNoButton()"
+          onmouseover="escapeNo()"
+          onclick="escapeNo()"
         >
-          NÃO 😅
+          NÃO 😭
         </button>
 
       </div>
 
-      <p class="small-text">
-        Dica: o botão "NÃO" parece estar com medo...
+      <p class="tiny">
+        O botão NÃO está aparentemente com problemas técnicos...
       </p>
 
     </div>
 
 
-    <!-- TELA 3 -->
-    <div class="screen" id="screen3">
+    <!-- ======================================
+         TELA 4
+    ======================================= -->
 
-      <div class="heart">🍔🍦</div>
+    <div class="screen" id="screen4">
 
-      <h2>Então vamos escolher a comida 😋</h2>
+      <div class="big-emoji">
+        🍔
+      </div>
+
+      <h2>
+        Muito bem... 😌
+      </h2>
 
       <p>
-        Porque uma boa conversa fica ainda melhor quando existe comida.
+        Já que chegámos até aqui,
+        agora vem a parte mais importante:
       </p>
 
-      <div class="option-grid">
+      <p class="highlight">
+        O QUE VAMOS COMER?
+      </p>
+
+      <div class="food-grid">
 
         <div
-          class="food-option"
+          class="food-card"
           data-value="Pao com Badjia"
           onclick="selectFood(this)"
         >
-          🥖<br>
+          <span class="food-icon">🥖</span>
           Pão com Badjia
         </div>
 
+
         <div
-          class="food-option"
+          class="food-card"
           data-value="Humburguer"
           onclick="selectFood(this)"
         >
-          🍔<br>
+          <span class="food-icon">🍔</span>
           Hambúrguer
         </div>
 
+
         <div
-          class="food-option"
+          class="food-card"
           data-value="Sorvete"
           onclick="selectFood(this)"
         >
-          🍦<br>
+          <span class="food-icon">🍦</span>
           Sorvete
         </div>
 
+
         <div
-          class="food-option"
+          class="food-card"
           data-value="Frango com Batata frita"
           onclick="selectFood(this)"
         >
-          🍗🍟<br>
+          <span class="food-icon">🍗🍟</span>
           Frango com Batata Frita
         </div>
 
       </div>
 
-      <p class="error" id="foodError">
-        Escolhe alguma coisa primeiro 😅
+      <p
+        id="foodError"
+        class="tiny"
+        style="display:none;color:#d6336c;"
+      >
+        Primeiro escolhe a comida 😂
       </p>
 
-      <button class="next-btn" onclick="goToDate()">
-        Próximo ❤️
-      </button>
-
-      <button class="back-btn" onclick="nextScreen(2)">
-        ← Voltar
+      <button
+        class="main-btn"
+        onclick="goToDate()"
+        style="margin-top:25px;"
+      >
+        Continuar 🍽️
       </button>
 
     </div>
 
 
-    <!-- TELA 4 -->
-    <div class="screen" id="screen4">
+    <!-- ======================================
+         TELA 5
+    ======================================= -->
 
-      <div class="heart">📅❤️</div>
+    <div class="screen" id="screen5">
 
-      <h2>Agora falta combinar o dia</h2>
+      <div class="big-emoji">
+        📅
+      </div>
+
+      <h2>
+        Agora vamos marcar o momento. ❤️
+      </h2>
 
       <p>
-        Escolhe uma data e uma hora que funcionem para ti.
+        Escolhe uma data e uma hora.
       </p>
 
       <label for="date">
-        📅 Data do encontro
+        📅 Data
       </label>
 
       <input
@@ -431,8 +790,9 @@
         id="date"
       >
 
+
       <label for="time">
-        ⏰ Hora do encontro
+        ⏰ Hora
       </label>
 
       <input
@@ -440,91 +800,97 @@
         id="time"
       >
 
-      <p class="error" id="dateError">
-        Escolhe a data e a hora, por favor 😅
+
+      <p
+        id="dateError"
+        class="tiny"
+        style="display:none;color:#d6336c;"
+      >
+        Não podemos marcar um encontro no vazio 😂
       </p>
 
-      <button class="next-btn" onclick="submitForm()">
-        Confirmar o convite ❤️
-      </button>
 
-      <button class="back-btn" onclick="nextScreen(3)">
-        ← Voltar
+      <button
+        class="main-btn"
+        onclick="submitForm()"
+        style="margin-top:25px;"
+      >
+        Fechar o negócio 🤝❤️
       </button>
 
     </div>
 
 
-    <!-- TELA 5 -->
-    <div class="screen" id="screen5">
+    <!-- ======================================
+         TELA 6
+    ======================================= -->
 
-      <div class="success-icon">
-        🥰
+    <div class="screen" id="screen6">
+
+      <div class="success">
+        🎉
       </div>
 
-      <h1>Então está combinado! ❤️</h1>
+      <h1>
+        TEMOS UM ENCONTRO! ❤️
+      </h1>
 
       <p>
-        Maria Fina Luis, obrigado por aceitar.
+        Benilda Chico Manjemanje,
+        oficialmente acabaste de aceitar sair comigo.
+      </p>
+
+      <div class="question-box">
+
+        <p>
+          <span class="highlight">
+            Status da operação:
+          </span>
+        </p>
+
+        <p>
+          🟢 Convite: ACEITE<br>
+          🟢 Comida: ESCOLHIDA<br>
+          🟢 Data: CONFIRMADA<br>
+          🟢 Jaime: FELIZ 😂
+        </p>
+
+      </div>
+
+      <p>
+        Prometo que não precisas preparar nenhum discurso,
+        não haverá entrevista de emprego
+        e provavelmente ninguém vai pedir referências. 😂
       </p>
 
       <p>
-        Agora já não vale dizer que não sabias. 😂
+        Só quero passar um bom momento contigo,
+        conversar, rir e aproveitar a companhia.
       </p>
 
       <p>
-        Nós já passámos por muita coisa.
+        Às vezes as melhores coisas começam
+        com um simples:
       </p>
 
-      <p>
-        Hoje estamos separados, cada um seguindo a sua vida,
-        mas existe uma história que sempre vai existir entre nós:
-        <span class="highlight">o nosso filho.</span>
-      </p>
-
-      <p>
-        E aqui estou eu a fazer um site inteiro só para te convidar
-        para comer qualquer coisa. 😂
-      </p>
-
-      <p>
-        Não fiz isto para complicar as coisas.
-        Nem para criar expectativas.
-      </p>
-
-      <p>
-        Só tu, eu, uma comida qualquer e uma conversa tranquila.
-      </p>
-
-      <p>
-        Porque antes de sermos ex,
-        somos duas pessoas que já viveram muita coisa juntas.
-      </p>
-
-      <p>
-        E temos uma pequena pessoa que merece ver os dois adultos
-        conseguirem pelo menos tomar um chá sem começar uma reunião
-        de emergência. 😂
-      </p>
-
-      <p>
-        Sem discurso dramático.
-        Sem promessa.
-        Sem pressão.
-        <br>
-        <span class="highlight">Só um convite. ❤️</span>
-      </p>
+      <h2>
+        "Vamos sair?" ❤️
+      </h2>
 
       <a
-        href="#"
-        class="calendar-btn"
         id="calendarLink"
+        class="calendar-btn"
+        href="#"
         target="_blank"
       >
-        📅 Adicionar ao Google Calendar
+        📅 Guardar no Google Calendar
       </a>
 
-      <div class="footer">
+      <p class="tiny" style="margin-top:20px;">
+        P.S.: Sim, eu fiz mesmo um site inteiro para te convidar. 😂
+      </p>
+
+      <div style="margin-top:25px;color:#999;font-size:13px;">
         — Jaime Cussara ❤️
       </div>
 
@@ -533,16 +899,16 @@
   </div>
 
 
-  <!--
-    FORMULÁRIO INVISÍVEL
-    Envia os dados diretamente para o Google Forms
-  -->
+  <!-- ======================================
+       GOOGLE FORMS INVISÍVEL
+  ======================================= -->
 
   <iframe
     name="hidden_iframe"
     id="hidden_iframe"
     style="display:none;"
   ></iframe>
+
 
   <form
     id="googleForm"
@@ -581,33 +947,43 @@
 
   <script>
 
-    // ============================================
-    // NOME DA PESSOA
-    // ============================================
+    /* ======================================
+       CONFIGURAÇÃO
+    ====================================== */
 
-    const nomeDaPessoa = "Maria Fina Luis";
-
-
-    // ============================================
-    // VARIÁVEIS
-    // ============================================
+    const nomeDaPessoa = "Benilda Chico Manjemanje";
 
     let selectedFood = "";
 
 
-    // ============================================
-    // TROCAR DE TELA
-    // ============================================
+    /* ======================================
+       TROCAR DE TELA
+    ====================================== */
 
-    function nextScreen(screenNumber) {
+    function nextScreen(number) {
 
       document.querySelectorAll(".screen").forEach(screen => {
         screen.classList.remove("active");
       });
 
       document
-        .getElementById("screen" + screenNumber)
+        .getElementById("screen" + number)
         .classList.add("active");
+
+
+      const progress = document.getElementById("progress");
+
+      const percentages = {
+        1: "16%",
+        2: "32%",
+        3: "50%",
+        4: "66%",
+        5: "83%",
+        6: "100%"
+      };
+
+      progress.style.width = percentages[number] || "20%";
+
 
       window.scrollTo({
         top: 0,
@@ -616,73 +992,140 @@
     }
 
 
-    // ============================================
-    // BOTÃO NÃO FOGE
-    // ============================================
+    /* ======================================
+       ACEITAR CONVITE
+    ====================================== */
 
-    function moveNoButton() {
+    function acceptInvite() {
 
-      const button = document.getElementById("noButton");
+      createConfetti();
 
-      const card = document.querySelector(".card");
-
-      const maxX = card.clientWidth - button.offsetWidth - 30;
-      const maxY = 100;
-
-      const randomX = Math.floor(Math.random() * Math.max(maxX, 100)) - 50;
-      const randomY = Math.floor(Math.random() * maxY) - 50;
-
-      button.style.position = "absolute";
-      button.style.left = randomX + "px";
-      button.style.top = randomY + "px";
+      setTimeout(() => {
+        nextScreen(4);
+      }, 500);
     }
 
 
-    // ============================================
-    // SELECIONAR COMIDA
-    // ============================================
+    /* ======================================
+       BOTÃO NÃO FOGE 😂
+    ====================================== */
+
+    function escapeNo() {
+
+      const button =
+        document.getElementById("noButton");
+
+
+      const container =
+        document.querySelector(".buttons");
+
+
+      const maxX =
+        container.clientWidth -
+        button.offsetWidth;
+
+
+      const maxY = 60;
+
+
+      const x =
+        Math.random() *
+        maxX -
+        maxX / 2;
+
+
+      const y =
+        Math.random() *
+        maxY -
+        maxY / 2;
+
+
+      button.style.transform =
+        `translate(${x}px, ${y}px)`;
+
+
+      const messages = [
+        "Ei! 😂",
+        "Quase!",
+        "Não tão rápido 😭",
+        "Esse botão está ocupado!",
+        "Tenta o outro 😌",
+        "Erro 404: NÃO encontrado 😂"
+      ];
+
+
+      button.innerText =
+        messages[
+          Math.floor(
+            Math.random() * messages.length
+          )
+        ];
+    }
+
+
+    /* ======================================
+       ESCOLHER COMIDA
+    ====================================== */
 
     function selectFood(element) {
 
-      document.querySelectorAll(".food-option").forEach(option => {
-        option.classList.remove("selected");
-      });
+      document
+        .querySelectorAll(".food-card")
+        .forEach(card => {
+          card.classList.remove("selected");
+        });
+
 
       element.classList.add("selected");
 
-      selectedFood = element.dataset.value;
 
-      document.getElementById("foodError").style.display = "none";
+      selectedFood =
+        element.dataset.value;
+
+
+      document
+        .getElementById("foodError")
+        .style.display = "none";
     }
 
 
-    // ============================================
-    // IR PARA DATA
-    // ============================================
+    /* ======================================
+       IR PARA DATA
+    ====================================== */
 
     function goToDate() {
 
       if (!selectedFood) {
 
-        document.getElementById("foodError").style.display = "block";
+        document
+          .getElementById("foodError")
+          .style.display = "block";
 
         return;
       }
 
-      nextScreen(4);
+
+      nextScreen(5);
     }
 
 
-    // ============================================
-    // ENVIAR PARA GOOGLE FORMS
-    // ============================================
+    /* ======================================
+       ENVIAR FORMULÁRIO
+    ====================================== */
 
     function submitForm() {
 
-      const date = document.getElementById("date").value;
-      const time = document.getElementById("time").value;
+      const date =
+        document.getElementById("date").value;
 
-      const error = document.getElementById("dateError");
+
+      const time =
+        document.getElementById("time").value;
+
+
+      const error =
+        document.getElementById("dateError");
+
 
       if (!date || !time) {
 
@@ -691,142 +1134,296 @@
         return;
       }
 
+
       error.style.display = "none";
 
 
-      // Preencher formulário
+      /* Preencher Google Forms */
 
-      document.getElementById("formNome").value = nomeDaPessoa;
-
-      document.getElementById("formComida").value = selectedFood;
-
-      document.getElementById("formData").value = date;
-
-      document.getElementById("formHora").value = time;
+      document
+        .getElementById("formNome")
+        .value = nomeDaPessoa;
 
 
-      // Enviar para Google Forms
-
-      document.getElementById("googleForm").submit();
-
-
-      // Criar link do Google Calendar
-
-      createCalendarLink(date, time);
+      document
+        .getElementById("formComida")
+        .value = selectedFood;
 
 
-      // Mostrar tela final
+      document
+        .getElementById("formData")
+        .value = date;
 
-      nextScreen(5);
+
+      document
+        .getElementById("formHora")
+        .value = time;
+
+
+      /* Enviar */
+
+      document
+        .getElementById("googleForm")
+        .submit();
+
+
+      /* Criar Calendar */
+
+      createCalendarLink(
+        date,
+        time
+      );
+
+
+      /* Confetes */
+
+      createConfetti();
+
+
+      /* Tela final */
+
+      setTimeout(() => {
+        nextScreen(6);
+      }, 500);
     }
 
 
-    // ============================================
-    // GOOGLE CALENDAR
-    // ============================================
+    /* ======================================
+       GOOGLE CALENDAR
+    ====================================== */
 
-    function createCalendarLink(date, time) {
+    function createCalendarLink(
+      date,
+      time
+    ) {
 
-      const [year, month, day] = date.split("-");
-
-      const [hour, minute] = time.split(":");
-
-
-      // Data/hora inicial
-
-      const startDate = new Date(
-        Number(year),
-        Number(month) - 1,
-        Number(day),
-        Number(hour),
-        Number(minute)
-      );
+      const [
+        year,
+        month,
+        day
+      ] = date.split("-");
 
 
-      // Duração aproximada: 1h30
-
-      const endDate = new Date(
-        startDate.getTime() + 90 * 60 * 1000
-      );
-
-
-      function formatCalendarDate(dateObject) {
-
-        const y = dateObject.getFullYear();
-
-        const m = String(
-          dateObject.getMonth() + 1
-        ).padStart(2, "0");
-
-        const d = String(
-          dateObject.getDate()
-        ).padStart(2, "0");
-
-        const h = String(
-          dateObject.getHours()
-        ).padStart(2, "0");
-
-        const min = String(
-          dateObject.getMinutes()
-        ).padStart(2, "0");
-
-        const s = String(
-          dateObject.getSeconds()
-        ).padStart(2, "0");
+      const [
+        hour,
+        minute
+      ] = time.split(":");
 
 
-        return `${y}${m}${d}T${h}${min}${s}`;
+      const startDate =
+        new Date(
+          Number(year),
+          Number(month) - 1,
+          Number(day),
+          Number(hour),
+          Number(minute)
+        );
+
+
+      /* 1h30 de duração */
+
+      const endDate =
+        new Date(
+          startDate.getTime() +
+          90 * 60 * 1000
+        );
+
+
+      function formatDate(date) {
+
+        const y =
+          date.getFullYear();
+
+
+        const m =
+          String(
+            date.getMonth() + 1
+          ).padStart(2, "0");
+
+
+        const d =
+          String(
+            date.getDate()
+          ).padStart(2, "0");
+
+
+        const h =
+          String(
+            date.getHours()
+          ).padStart(2, "0");
+
+
+        const min =
+          String(
+            date.getMinutes()
+          ).padStart(2, "0");
+
+
+        const s =
+          String(
+            date.getSeconds()
+          ).padStart(2, "0");
+
+
+        return (
+          y +
+          m +
+          d +
+          "T" +
+          h +
+          min +
+          s
+        );
       }
 
 
-      const start = formatCalendarDate(startDate);
+      const start =
+        formatDate(startDate);
 
-      const end = formatCalendarDate(endDate);
+
+      const end =
+        formatDate(endDate);
 
 
       const title =
-        "Encontro - Jaime & Maria Fina Luis ❤️";
+        "Encontro - Jaime & Benilda Chico Manjemanje ❤️";
 
 
       const details =
-        "Um convite simples para comer qualquer coisa e conversar. ❤️";
+        "Um encontro especial para comer, conversar, rir e passar um bom momento juntos. ❤️";
 
 
       const calendarUrl =
-        "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-        "&text=" + encodeURIComponent(title) +
-        "&dates=" + start + "/" + end +
-        "&details=" + encodeURIComponent(details);
+        "https://calendar.google.com/calendar/render" +
+        "?action=TEMPLATE" +
+        "&text=" +
+        encodeURIComponent(title) +
+        "&dates=" +
+        start +
+        "/" +
+        end +
+        "&details=" +
+        encodeURIComponent(details);
 
 
-      document.getElementById("calendarLink").href = calendarUrl;
+      document
+        .getElementById("calendarLink")
+        .href = calendarUrl;
     }
 
 
-    // ============================================
-    // DEFINIR DATA MÍNIMA COMO HOJE
-    // ============================================
+    /* ======================================
+       CONFETES
+    ====================================== */
 
-    document.addEventListener("DOMContentLoaded", function () {
+    function createConfetti() {
 
-      const dateInput = document.getElementById("date");
-
-      const today = new Date();
-
-      const year = today.getFullYear();
-
-      const month = String(
-        today.getMonth() + 1
-      ).padStart(2, "0");
-
-      const day = String(
-        today.getDate()
-      ).padStart(2, "0");
+      const emojis = [
+        "❤️",
+        "💕",
+        "💖",
+        "🎉",
+        "✨",
+        "🥰",
+        "💗",
+        "🌹"
+      ];
 
 
-      dateInput.min = `${year}-${month}-${day}`;
+      for (
+        let i = 0;
+        i < 45;
+        i++
+      ) {
 
-    });
+        const confetti =
+          document.createElement("div");
+
+
+        confetti.className =
+          "confetti";
+
+
+        confetti.innerText =
+          emojis[
+            Math.floor(
+              Math.random() *
+              emojis.length
+            )
+          ];
+
+
+        confetti.style.left =
+          Math.random() * 100 + "vw";
+
+
+        confetti.style.fontSize =
+          (12 +
+          Math.random() * 18) +
+          "px";
+
+
+        confetti.style.animationDuration =
+          (2 +
+          Math.random() * 3) +
+          "s";
+
+
+        confetti.style.animationDelay =
+          Math.random() * 0.5 +
+          "s";
+
+
+        document.body.appendChild(
+          confetti
+        );
+
+
+        setTimeout(() => {
+
+          confetti.remove();
+
+        }, 5000);
+      }
+    }
+
+
+    /* ======================================
+       DATA MÍNIMA
+    ====================================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        const dateInput =
+          document.getElementById("date");
+
+
+        const today =
+          new Date();
+
+
+        const year =
+          today.getFullYear();
+
+
+        const month =
+          String(
+            today.getMonth() + 1
+          ).padStart(2, "0");
+
+
+        const day =
+          String(
+            today.getDate()
+          ).padStart(2, "0");
+
+
+        dateInput.min =
+          `${year}-${month}-${day}`;
+      }
+    );
 
   </script>
 
