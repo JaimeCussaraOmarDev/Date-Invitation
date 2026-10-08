@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Um convite para Teresa Feliciano ❤️</title>
+  <title>Um convite para Maria Fina Luis ❤️</title>
 
   <style>
     * {
@@ -46,7 +46,6 @@
       0%, 100% {
         transform: scale(1);
       }
-
       50% {
         transform: scale(1.12);
       }
@@ -283,7 +282,7 @@
 
       <div class="heart">❤️</div>
 
-      <h1>Teresa Feliciano...</h1>
+      <h1>Maria Fina Luis...</h1>
 
       <p>
         Eu poderia simplesmente mandar uma mensagem e perguntar:
@@ -291,8 +290,8 @@
       </p>
 
       <p>
-        Mas achei que seria demasiado simples.
-        Então decidi fazer um site inteiro para te fazer esse convite. 😂
+        Mas achei que seria muito simples.
+        Então decidi fazer um site inteiro para isso. 😂
       </p>
 
       <p>
@@ -300,7 +299,7 @@
       </p>
 
       <p>
-        Mas antes que eu complique ainda mais, vamos direto ao assunto. 😅
+        Então vamos direto ao assunto.
       </p>
 
       <button class="next-btn" onclick="nextScreen(2)">
@@ -315,14 +314,11 @@
 
       <div class="heart">🥹❤️</div>
 
-      <h2>Teresa Feliciano, vai aceitar sair comigo?</h2>
+      <h2>Maria Fina Luis, vai aceitar sair comigo?</h2>
 
       <p>
-        Prometo que vai ser simples, tranquilo e sem interrogatório. 😂
-      </p>
-
-      <p>
-        Só quero passar um tempo contigo e conhecer-te ainda melhor.
+        Prometo que não é uma armadilha.
+        Pelo menos não uma muito séria. 😂
       </p>
 
       <div class="buttons">
@@ -469,7 +465,7 @@
       <h1>Então está combinado! ❤️</h1>
 
       <p>
-        Teresa Feliciano, obrigado por aceitar.
+        Maria Fina Luis, obrigado por aceitar.
       </p>
 
       <p>
@@ -477,36 +473,46 @@
       </p>
 
       <p>
-        A verdade é que eu podia ter feito este convite
-        de uma maneira muito mais simples...
+        Nós já passámos por muita coisa.
       </p>
 
       <p>
-        Mas achei que valia a pena fazer algo diferente
-        só para te arrancar um sorriso. ❤️
+        Hoje estamos separados, cada um seguindo a sua vida,
+        mas existe uma história que sempre vai existir entre nós:
+        <span class="highlight">o nosso filho.</span>
       </p>
 
       <p>
-        Não quero complicar as coisas.
-        Quero apenas passar um tempo contigo,
-        conversar, rir um pouco e aproveitar o momento.
+        E aqui estou eu a fazer um site inteiro só para te convidar
+        para comer qualquer coisa. 😂
+      </p>
+
+      <p>
+        Não fiz isto para complicar as coisas.
+        Nem para criar expectativas.
+      </p>
+
+      <p>
+        Só tu, eu, uma comida qualquer e uma conversa tranquila.
+      </p>
+
+      <p>
+        Porque antes de sermos ex,
+        somos duas pessoas que já viveram muita coisa juntas.
+      </p>
+
+      <p>
+        E temos uma pequena pessoa que merece ver os dois adultos
+        conseguirem pelo menos tomar um chá sem começar uma reunião
+        de emergência. 😂
       </p>
 
       <p>
         Sem discurso dramático.
+        Sem promessa.
         Sem pressão.
-        Sem expectativas exageradas.
-      </p>
-
-      <p>
-        <span class="highlight">
-          Só eu, tu, uma comida qualquer e uma boa conversa. ❤️
-        </span>
-      </p>
-
-      <p>
-        E, sinceramente...
-        acho que pode ser um encontro bem bonito. 😊
+        <br>
+        <span class="highlight">Só um convite. ❤️</span>
       </p>
 
       <a
@@ -527,7 +533,11 @@
   </div>
 
 
-  <!-- FORMULÁRIO INVISÍVEL -->
+  <!--
+    FORMULÁRIO INVISÍVEL
+    Envia os dados diretamente para o Google Forms
+  -->
+
   <iframe
     name="hidden_iframe"
     id="hidden_iframe"
@@ -575,7 +585,7 @@
     // NOME DA PESSOA
     // ============================================
 
-    const nomeDaPessoa = "Teresa Feliciano";
+    const nomeDaPessoa = "Maria Fina Luis";
 
 
     // ============================================
@@ -613,16 +623,14 @@
     function moveNoButton() {
 
       const button = document.getElementById("noButton");
+
       const card = document.querySelector(".card");
 
       const maxX = card.clientWidth - button.offsetWidth - 30;
       const maxY = 100;
 
-      const randomX =
-        Math.floor(Math.random() * Math.max(maxX, 100)) - 50;
-
-      const randomY =
-        Math.floor(Math.random() * maxY) - 50;
+      const randomX = Math.floor(Math.random() * Math.max(maxX, 100)) - 50;
+      const randomY = Math.floor(Math.random() * maxY) - 50;
 
       button.style.position = "absolute";
       button.style.left = randomX + "px";
@@ -724,6 +732,8 @@
       const [hour, minute] = time.split(":");
 
 
+      // Data/hora inicial
+
       const startDate = new Date(
         Number(year),
         Number(month) - 1,
@@ -733,7 +743,7 @@
       );
 
 
-      // Duração de 1h30
+      // Duração aproximada: 1h30
 
       const endDate = new Date(
         startDate.getTime() + 90 * 60 * 1000
@@ -770,15 +780,16 @@
 
 
       const start = formatCalendarDate(startDate);
+
       const end = formatCalendarDate(endDate);
 
 
       const title =
-        "Encontro - Jaime & Teresa Feliciano ❤️";
+        "Encontro - Jaime & Maria Fina Luis ❤️";
 
 
       const details =
-        "Um convite especial para comer qualquer coisa, conversar e passar um bom momento. ❤️";
+        "Um convite simples para comer qualquer coisa e conversar. ❤️";
 
 
       const calendarUrl =
